@@ -1,0 +1,33 @@
+{% extends "based.html" %}
+{% block title %}
+Reviews
+{% endblock  %}
+{% block content %}
+<br>
+<h1 style='text-align: center;'>STUDENT FEEDBACK SHEET</h1>
+<br>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">COUNT</th>
+        <th scope="col">ROLL NUMBEER</th>
+        <th scope="col">STUDENT NAME</th>
+        <th scope="col">FEEDBACK</th>
+        <th scope="col">DELETE & UPDATE</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for value in values %}
+      <tr>
+        <th scope="row">{{forloop.counter}} </th>
+        <td>{{value.roll_no}} </td>
+        <td>{{value.student_name}} </td>
+        <td>{{value.student_reviews}} </td>
+        {% comment %} <td><button ><a href="/reviews/delete_feedback/{{value.id}}">Delete</a> <button>
+          <a href="">update</a>
+        </button></td> {% endcomment %}
+        <td><a href="/reviews/delete_feedback/{{value.id}}"><button style='background-color: red;'>Delete</button></a> <a href="/reviews/update_feedback/{{value.id}}"><button style='background-color: green;'>Update</button></a></td>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

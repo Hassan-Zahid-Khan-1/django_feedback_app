@@ -1,0 +1,37 @@
+
+{% extends "based.html" %}
+{% block title %}
+home page
+{% endblock %}
+{% block content %}
+<div class='message'>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    </div>
+
+    <div class="form-container">
+        <h2>Student Feedback Form</h2>
+        <form action="#" method="post">
+            {% csrf_token %}
+            <label for="rollno">Roll No:</label>
+            <input type="text" id="rollno" name="rollno" placeholder="Enter Roll No" required>
+
+            <label for="studentname">Student Name:</label>
+            <input type="text" id="studentname" name="studentname" placeholder="Enter Student Name" required>
+
+            <label for="review">Student Reviews:</label>
+            <textarea id="review" name="review" rows="4" placeholder="Write your review here..." required></textarea>
+            <p>Check reviews <a href="/reviews/reviews/" style='color:blue;text-decoration: underline;'>Reviews</a></p>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+
+{% endblock %}
